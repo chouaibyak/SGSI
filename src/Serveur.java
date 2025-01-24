@@ -39,12 +39,13 @@ public class Serveur {
 
   // methodes
   public void demarrerServeur() {
+    ServerSocket serverSocket = null;
     try {
-      ServerSocket serveurSocket = new ServerSocket(port);
+      serverSocket = new ServerSocket(port);
       System.out.println("Serveur démarré sur " + addressIP + ":" + port);
 
       while (true) {
-        Socket clientSocket = serveurSocket.accept(); // bloque programme jusqu'à un client connecte
+        Socket clientSocket = serverSocket.accept(); // bloque programme jusqu'à un client connecte
         System.out.println("Nouvelle connexion de " + clientSocket.getInetAddress());
 
         // Créer un thread pour gérer cette connexion

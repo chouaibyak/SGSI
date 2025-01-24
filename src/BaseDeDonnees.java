@@ -52,11 +52,14 @@ public class BaseDeDonnees {
   public void fermerConnexion(Connection connection, Statement statement) {
     try {
       if (connection != null) {
-        connection.close();
+        connection.close(); // Fermer connexion
       }
-    } catch (Exception e) {
-      e.printStackTrace();
+      if (statement != null) {
+        statement.close(); // fermer statement
+      }
+      System.out.println("Connexion et ressources fermees avex succes !");
+    } catch (SQLException e) {
+      System.out.println("Erreur de la fermeture des ressources : " + e.getLocalizedMessage());
     }
-
   }
 }
